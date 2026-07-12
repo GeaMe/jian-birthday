@@ -1,4 +1,30 @@
 <!DOCTYPE html>
+<!--
+  ============================================================
+  김지안 첫 생일 초대장  (GitHub Pages / 정적 호스팅용)
+  ============================================================
+  ★ 사진 바꾸는 법 ★
+  이 index.html 파일과 "같은 폴더"에 사진을 아래 이름으로 올리면 됩니다.
+  (휴대폰 사진을 이 이름으로 바꿔서 업로드 → 끝. 같은 이름으로 다시 올리면 교체됩니다.)
+
+     example1.jpg   →  상단 대표 사진 (큰 사진)
+     example2.jpg   →  갤러리 1
+     example3.jpg   →  갤러리 2
+     example4.jpg   →  갤러리 3
+     example5.jpg   →  갤러리 4
+     example6.jpg   →  갤러리 5
+     example7.jpg   →  갤러리 6
+     example8.jpg   →  갤러리 7
+     example9.jpg   →  갤러리 8
+     example10.jpg  →  갤러리 9
+
+  · 파일 확장자는 .jpg 로 맞춰주세요. (png 를 쓰면 아래 코드의 .jpg 를 .png 로 바꾸면 됩니다)
+  · 사진이 없는 칸은 자동으로 "준비 중" 표시가 나옵니다. 일부만 넣어도 됩니다.
+
+  ★ 글자 바꾸는 법 ★
+  본문에서  [수정]  이라고 적힌 줄을 직접 고치면 됩니다.
+  ============================================================
+-->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -69,14 +95,11 @@
     border:1px solid var(--line); background:#efe6d6; aspect-ratio:3/4;
     box-shadow:0 18px 40px -22px rgba(56,46,39,.5)}
   .frame .arch img{width:100%; height:100%; object-fit:cover; display:none}
-  .seal{position:absolute; right:-14px; bottom:-14px; width:84px; height:84px; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #f4d98a, var(--gold) 70%);
-    color:#5b4412; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    font-family:var(--serif); box-shadow:0 8px 18px -8px rgba(91,68,18,.7); border:2px solid #fbf6ee; z-index:2}
-  .seal b{font-size:26px; font-weight:900; line-height:1}
-  .seal span{font-family:var(--ui); font-size:9px; letter-spacing:.2em; margin-top:2px}
 
-  .dateband{margin:40px auto 0; display:inline-flex; align-items:center; gap:16px; font-family:var(--serif)}
+  .invite{margin:36px 0 0; font-family:var(--maru); font-size:15.5px; color:var(--ink-soft); letter-spacing:.01em}
+  .invite b{font-weight:700; color:var(--clay-deep)}
+
+  .dateband{margin:16px auto 0; display:inline-flex; align-items:center; gap:16px; font-family:var(--serif)}
   .dateband .d{font-weight:700; font-size:34px; letter-spacing:.06em}
   .dateband .sep{width:1px; height:34px; background:var(--line)}
   .dateband .t{text-align:left; font-family:var(--ui); font-size:12px; color:var(--ink-soft); letter-spacing:.06em; line-height:1.7}
@@ -94,10 +117,9 @@
   .gal-head{text-align:center; padding:0 28px 18px}
   .gal-head .ko{font-family:var(--serif); font-weight:700; font-size:21px; letter-spacing:.04em}
   .gal-head .en{font-family:var(--ui); font-size:11px; letter-spacing:.34em; color:var(--sage); text-transform:uppercase; margin-top:6px}
-  .gal{display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 22px}
+  .gal{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:0 22px}
   .cell{position:relative; border-radius:14px; overflow:hidden; background:#efe6d6;
     border:1px solid var(--line); aspect-ratio:1/1}
-  .cell.tall{aspect-ratio:1/1.32}
   .cell img{width:100%; height:100%; object-fit:cover; display:none; cursor:zoom-in}
   .ph{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:8px; color:#b7a890; font-family:var(--ui); font-size:11.5px; letter-spacing:.04em;
@@ -151,14 +173,11 @@
   .copy{margin-top:16px; appearance:none; border:1px solid var(--line); background:#fff; color:var(--ink);
     font-family:var(--ui); font-size:12.5px; padding:10px 18px; border-radius:999px; cursor:pointer}
   .copy.done{background:var(--sage); color:#fff; border-color:var(--sage)}
-  .maps{display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-top:16px}
+  .maps{display:grid; grid-template-columns:repeat(2,1fr); gap:9px; margin-top:16px}
   .maps a{display:flex; align-items:center; justify-content:center; text-decoration:none;
     font-family:var(--ui); font-size:12.5px; font-weight:500; color:var(--ink); background:#fff;
     border:1px solid var(--line); border-radius:12px; padding:12px 0}
   .maps a:active{background:#f3ece0}
-  .cta-cal{margin:16px auto 0; display:block; width:fit-content; min-width:min(260px,78%); text-align:center;
-    appearance:none; cursor:pointer; border:none; background:var(--ink); color:#f7efe2; font-family:var(--ui);
-    font-weight:500; font-size:13.5px; letter-spacing:.04em; padding:15px 34px; border-radius:14px}
 
   /* 계좌 섹션 — 쓰려면 본문 주석을 해제하세요 */
   .heart{margin:8px 22px 0; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:22px; text-align:center}
@@ -199,7 +218,7 @@
 
   <!-- ===== 대표 사진 + 이름 ===== -->
   <section class="hero reveal in">
-    <p class="eyebrow">Invitation · 첫 번째 생일</p>
+    <p class="eyebrow">Invitation · 돌잔치</p>
     <div class="hero-name">
       <span class="ghost-one">1</span>
       <h1 class="name">김지안</h1> <!-- [수정] 아기 이름 -->
@@ -212,13 +231,14 @@
         <div class="ph"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>대표 사진</span></div>
         <img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example1.jpg" alt="지안" onload="this.previousElementSibling.style.display='none';this.style.display='block'">
       </div>
-      <div class="seal"><b>돌</b><span>JIAN</span></div>
     </div>
+
+    <p class="invite">지안이의 <b>돌잔치</b>에 초대합니다</p>
 
     <div class="dateband">
       <div class="d">10·24</div>
       <div class="sep"></div>
-      <div class="t"><b>2026. SAT</b>오전 11시 30분<br>오하리 · 평택</div>
+      <div class="t">오전 11시 30분<br>오하리 · 평택</div>
     </div>
   </section>
 
@@ -234,7 +254,7 @@
 
   <div class="rule reveal"><span class="ln"></span><span class="dot">❀</span><span class="ln"></span></div>
 
-  <!-- ===== 갤러리 (example2~6.jpg) ===== -->
+  <!-- ===== 갤러리 9장 (example2~10.jpg) ===== -->
   <section class="reveal">
     <div class="gal-head">
       <div class="ko">지안이의 365일</div>
@@ -246,6 +266,10 @@
       <div class="cell"><div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>준비 중</span></div><img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example4.jpg" alt="" onload="this.previousElementSibling.style.display='none';this.style.display='block'"></div>
       <div class="cell"><div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>준비 중</span></div><img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example5.jpg" alt="" onload="this.previousElementSibling.style.display='none';this.style.display='block'"></div>
       <div class="cell"><div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>준비 중</span></div><img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example6.jpg" alt="" onload="this.previousElementSibling.style.display='none';this.style.display='block'"></div>
+      <div class="cell"><div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>준비 중</span></div><img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example7.jpg" alt="" onload="this.previousElementSibling.style.display='none';this.style.display='block'"></div>
+      <div class="cell"><div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>준비 중</span></div><img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example8.jpg" alt="" onload="this.previousElementSibling.style.display='none';this.style.display='block'"></div>
+      <div class="cell"><div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>준비 중</span></div><img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example9.jpg" alt="" onload="this.previousElementSibling.style.display='none';this.style.display='block'"></div>
+      <div class="cell"><div class="ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="13" rx="2.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8 7l1.5-2.5h5L16 7"/></svg><span>준비 중</span></div><img class="lbtrg" onerror="if(!this.dataset.alt){this.dataset.alt=1;this.src=this.src.replace(/\.jpg$/,&apos;.JPG&apos;);}" src="example10.jpg" alt="" onload="this.previousElementSibling.style.display='none';this.style.display='block'"></div>
     </div>
   </section>
 
@@ -283,11 +307,9 @@
         <div class="maps">
           <a id="navmap" target="_blank" rel="noopener">네이버</a>
           <a id="kakmap" target="_blank" rel="noopener">카카오</a>
-          <a id="tmap" target="_blank" rel="noopener">티맵</a>
         </div>
       </div>
     </div>
-    <button class="cta-cal" id="calBtn">내 캘린더에 일정 저장하기</button>
   </section>
 
   <!-- 마음 전하실 곳(선택): 쓰려면 아래 줄에서 display:none 만 지우고, 계좌를 [수정] 하세요 -->
@@ -298,7 +320,7 @@
     </div>
   </section>
 
-  <button class="share reveal" id="shareBtn" style="margin-top:18px"><span>♥</span><span>초대장 공유하기</span></button>
+  <button class="share reveal" id="shareBtn"><span>♥</span><span>초대장 공유하기</span></button>
 
   <footer class="reveal">
     <div class="fseal">· 돌 ·</div>
@@ -350,17 +372,6 @@
     html+='</tr>'; t.innerHTML=head+html;
   }
 
-  function saveICS(){
-    var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Jian First Birthday//KR','CALSCALE:GREGORIAN',
-      'BEGIN:VEVENT','UID:jian-1st-birthday-20261024@invite',
-      'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z',
-      'DTSTART;TZID=Asia/Seoul:20261024T113000','DTEND;TZID=Asia/Seoul:20261024T133000',
-      'SUMMARY:김지안 돌잔치','LOCATION:오하리 (경기도 평택시 죽백3로 167-3 1층)',
-      'DESCRIPTION:지안이의 첫 번째 생일을 함께 축하해 주세요 (생일 2025.10.26)','END:VEVENT','END:VCALENDAR'].join('\r\n');
-    var blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}), url=URL.createObjectURL(blob), a=document.createElement('a');
-    a.href=url; a.download='jian-first-birthday.ics'; document.body.appendChild(a); a.click();
-    document.body.removeChild(a); URL.revokeObjectURL(url); toast('일정 파일을 저장했어요');
-  }
 
   function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show');
     clearTimeout(t._tm); t._tm=setTimeout(function(){t.classList.remove('show');},1900); }
@@ -368,7 +379,6 @@
   function setupMaps(){
     document.getElementById('navmap').href='https://map.naver.com/p/search/'+encodeURIComponent('오하리 경기도 평택시 죽백3로 167-3');
     document.getElementById('kakmap').href='https://map.kakao.com/?q='+encodeURIComponent('경기도 평택시 죽백3로 167-3 오하리');
-    document.getElementById('tmap').href='https://tmap.life/?goalname='+encodeURIComponent('오하리')+'&goaladdress='+encodeURIComponent('경기도 평택시 죽백3로 167-3');
   }
 
   function wire(){
@@ -378,11 +388,11 @@
         var b=document.getElementById('copyBtn'); b.textContent='✓ 복사되었습니다'; b.classList.add('done'); toast('주소가 복사되었어요');
         setTimeout(function(){ b.textContent='주소 복사하기'; b.classList.remove('done'); },2200);
       }).catch(function(){ toast('주소: '+addr); }); };
-    document.getElementById('calBtn').onclick=saveICS;
     document.getElementById('shareBtn').onclick=function(){
-      var data={title:'김지안 첫 생일에 초대합니다', text:'2026년 10월 24일(토) 오전 11시 30분 · 오하리 (평택)', url:location.href};
+      var data={title:'김지안 돌잔치에 초대합니다', text:'2026년 10월 24일(토) 오전 11시 30분 · 오하리 (평택)', url:location.href};
       if(navigator.share){ navigator.share(data).catch(function(){}); }
       else { navigator.clipboard.writeText(location.href).then(function(){toast('링크가 복사되었어요');}).catch(function(){toast('주소창의 링크를 복사해 주세요');}); } };
+
     // ----- lightbox with prev/next -----
     var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'),
         lbCount=document.getElementById('lbCount'), lbPrev=document.getElementById('lbPrev'),
