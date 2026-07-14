@@ -184,6 +184,27 @@
   .heart .ttl{font-family:var(--serif); font-weight:700; font-size:16px}
   .heart .body{font-size:13.5px; color:var(--ink-soft); margin-top:10px; white-space:pre-wrap; word-break:keep-all}
 
+  /* ===== RSVP ===== */
+
+  .rsvp-link{display:inline-block; margin-bottom:26px; font-family:var(--ui); font-size:12.5px;
+    color:var(--clay-deep); text-decoration:none; border-bottom:1px solid rgba(168,84,58,.35);
+    padding-bottom:2px; letter-spacing:.02em}
+
+  .rsvp-back{position:fixed; inset:0; background:rgba(40,33,28,.6); z-index:95; display:none;
+    align-items:center; justify-content:center; padding:16px}
+  .rsvp-back.open{display:flex}
+  .rsvp-modal{background:var(--bg); border-radius:18px; width:100%; max-width:420px; height:min(86vh,760px);
+    display:flex; flex-direction:column; overflow:hidden; box-shadow:0 30px 60px -20px rgba(40,33,28,.6)}
+  .rsvp-head{display:flex; align-items:center; justify-content:space-between; padding:16px 18px;
+    border-bottom:1px solid var(--line); font-family:var(--serif); font-weight:700; font-size:15px; flex:none}
+  .rsvp-x{appearance:none; border:none; background:transparent; color:var(--ink-soft); font-size:24px;
+    line-height:1; cursor:pointer; padding:0 2px}
+  .rsvp-body{position:relative; flex:1; min-height:0; background:#fff}
+  .rsvp-body iframe{width:100%; height:100%; border:0; display:block}
+  .rsvp-load{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:var(--ui); font-size:13px; color:var(--ink-soft); background:#fff; z-index:1}
+  .rsvp-load.hide{display:none}
+
   .share{margin:16px auto 0; appearance:none; width:fit-content; min-width:min(260px,78%); cursor:pointer;
     border:1px solid var(--clay); background:#fff; color:var(--clay-deep); font-family:var(--ui); font-weight:700;
     font-size:13.5px; letter-spacing:.04em; padding:14px 34px; border-radius:14px; display:flex;
@@ -312,6 +333,7 @@
     </div>
   </section>
 
+
   <!-- 마음 전하실 곳(선택): 쓰려면 아래 줄에서 display:none 만 지우고, 계좌를 [수정] 하세요 -->
   <section class="reveal" style="display:none; margin-top:18px">
     <div class="heart">
@@ -323,10 +345,27 @@
   <button class="share reveal" id="shareBtn"><span>♥</span><span>초대장 공유하기</span></button>
 
   <footer class="reveal">
+    <a href="#" class="rsvp-link" id="rsvpReopen">참석 여부 전하기</a>
     <div class="fseal">· 돌 ·</div>
     <div class="ft">Thank you</div>
     <div class="fn">2026 · 10 · 24 &nbsp; 지안이의 돌잔치</div>
   </footer>
+</div>
+
+<!-- ===== 참석 여부 팝업 (구글 폼) ===== -->
+<div class="rsvp-back" id="rsvpBack">
+  <div class="rsvp-modal">
+    <div class="rsvp-head">
+      <span>참석 여부 전하기</span>
+      <button class="rsvp-x" id="rsvpClose" aria-label="닫기">×</button>
+    </div>
+    <div class="rsvp-body">
+      <div class="rsvp-load" id="rsvpLoad">불러오는 중…</div>
+      <!-- [수정] 구글 폼 주소 -->
+      <iframe id="rsvpFrame" title="참석 여부 폼" loading="lazy"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdE1vHrNTSZiLJFRcPNdHqoHarUyfzusDi33SxnhNZ9jYLgxQ/viewform?embedded=true"></iframe>
+    </div>
+  </div>
 </div>
 
 <div class="lb" id="lightbox">
@@ -392,6 +431,28 @@
       var data={title:'김지안 돌잔치에 초대합니다', text:'2026년 10월 24일(토) 오전 11시 30분 · 오하리 (평택)', url:location.href};
       if(navigator.share){ navigator.share(data).catch(function(){}); }
       else { navigator.clipboard.writeText(location.href).then(function(){toast('링크가 복사되었어요');}).catch(function(){toast('주소창의 링크를 복사해 주세요');}); } };
+
+    // ----- RSVP modal (Google Form) -----
+    var rsvpBack=document.getElementById('rsvpBack'), rsvpFrame=document.getElementById('rsvpFrame'),
+        rsvpLoad=document.getElementById('rsvpLoad'), rsvpSrc=rsvpFrame.getAttribute('src');
+    rsvpFrame.removeAttribute('src'); // 열 때 로드
+    var rsvpLoaded=false;
+    rsvpFrame.addEventListener('load', function(){ rsvpLoad.classList.add('hide'); });
+    function rsvpOpen(){
+      rsvpBack.classList.add('open');
+      document.body.style.overflow='hidden';
+      if(!rsvpLoaded){ rsvpLoaded=true; rsvpFrame.setAttribute('src', rsvpSrc); }
+    }
+    function rsvpClose(){ rsvpBack.classList.remove('open'); document.body.style.overflow=''; }
+    var reopen=document.getElementById('rsvpReopen');
+    if(reopen) reopen.addEventListener('click', function(e){ e.preventDefault(); rsvpOpen(); });
+    document.getElementById('rsvpClose').addEventListener('click', rsvpClose);
+    rsvpBack.addEventListener('click', function(e){ if(e.target===rsvpBack) rsvpClose(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape' && rsvpBack.classList.contains('open')) rsvpClose();
+    });
+    // 링크로 열면 바로 팝업 표시
+    setTimeout(rsvpOpen, 700);
 
     // ----- lightbox with prev/next -----
     var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'),
